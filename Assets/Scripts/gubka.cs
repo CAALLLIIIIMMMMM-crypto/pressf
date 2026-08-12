@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,10 +7,19 @@ public class gubka : MonoBehaviour
 {
     public float radius;
     public LayerMask layer;
-    public Vector3 _lastpos;
+
+    private dragables _dragables;
+
+    private void Start()
+    {
+        _dragables =  GetComponent<dragables>();
+    }
 
     private void Update()
     {
+        if(!_dragables.isdraging)
+            return;
+        
         Collider2D col = Physics2D.OverlapCircle(transform.position, radius, layer);
 
         if (col != null)

@@ -9,20 +9,26 @@ public class ZakazSystem : MonoBehaviour
     public static ZakazSystem Instance;
     public bool isZakazGoing;
     
+    public Action<ZakazInfo> onZakazStart;
     
-    private void Start()
+    
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
+        
     }
 
     public void StartZakaz(ZakazInfo zakaz)
     {
         if (isZakazGoing)
             return;
+        
 
         currentZakaz = zakaz;
         isZakazGoing = true;
+        
+        onZakazStart?.Invoke(currentZakaz);
     }
 
     public void Finish(CoffeData coffeData, out bool isCorrect) 

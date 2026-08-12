@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 public class dragables : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    public RectTransform rectTransform;
-    public Canvas canvas;
+    private RectTransform rectTransform;
+    private Canvas canvas;
     public bool isdraging;
     public void Start()
     {
@@ -30,7 +30,7 @@ public class dragables : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     }   
     public void StopDrag()
     {
-        //isdraging = false;
+        isdraging = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
